@@ -1,0 +1,140 @@
+tags:
+- name: screenshots
+  description: screenshots API
+
+paths:
+# [GET] screenshots
+  /screenshots:
+    get:
+      tags:
+      - screenshots
+      summary: Find All Screenshot Data
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+
+# [POST] screenshots
+    post:
+      tags:
+      - screenshots
+      summary: Add Screenshot Data
+      parameters:
+      - name: body
+        in: body
+        description: Screenshot Data
+        required: true
+        schema:
+          $ref: '#/definitions/screenshots'
+      responses:
+        201:
+          description: 'Created'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [GET] screenshots/id
+  /screenshots/{id}:
+    get:
+      tags:
+      - screenshots
+      summary: Find Screenshot By Id
+      parameters:
+      - name: id
+        in: path
+        description: Id
+        required: true
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [PUT] screenshots/id
+    put:
+      tags:
+      - screenshots
+      summary: Update Screenshot By Id
+      parameters:
+      - name: id
+        in: path
+        description: Id
+        required: true
+      - name: body
+        in: body
+        description: Screenshot Data
+        required: true
+        schema:
+          $ref: '#/definitions/screenshots'
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# [DELETE] screenshots/id
+    delete:
+      tags:
+      - screenshots
+      summary: Delete Screenshot By Id
+      parameters:
+      - name: id
+        in: path
+        description: Id
+        required: true
+      responses:
+        200:
+          description: 'OK'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+
+# definitions
+definitions:
+  screenshots:
+    type: object
+    required:
+        - os
+        - device_name
+        - mac_address
+        - imei
+        - location
+        - public_ip_address
+        - status
+    properties:
+      os:
+        type: string
+        description: Device Operating System
+      device_name:
+        type: string
+        description: Device Name
+      mac_address:
+        type: string
+        description: Device MAC Address
+      imei:
+        type: string
+        description: Device IMEI Number
+      location:
+        type: string
+        description: Device Location
+      public_ip_address:
+        type: string
+        description: Device Public IP
+      status:
+        type: boolean
+        description: Device Screenshot Status
+
+schemes:
+ - https
+ - http

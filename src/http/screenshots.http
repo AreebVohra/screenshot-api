@@ -1,0 +1,44 @@
+# baseURL
+@baseURL = http://localhost:3000
+
+###
+# Find All Screenshots
+GET {{ baseURL }}/screenshots
+
+###
+# Find Screenshot By Id
+GET {{ baseURL }}/screenshots/1
+
+###
+# Create Screenshot
+POST {{ baseURL }}/screenshots
+Content-Type: application/json
+
+{
+  "os": "IOS",
+  "device_name": "Apple",
+  "mac_address": "00:00:00:00:00:00",
+  "imei": "137483746392746",
+  "location": "Karachi, Pakistan",
+  "public_ip_address": "0.0.0.0",
+  "status": true
+}
+
+###
+# Modify Screenshot By Id
+PUT {{ baseURL }}/screenshots/1
+Content-Type: application/json
+
+{
+  "os": "IOS",
+  "device_name": "Apple",
+  "mac_address": "00:00:00:00:00:00",
+  "imei": "137483746392746",
+  "location": "Karachi, Pakistan",
+  "public_ip_address": "0.0.0.0",
+  "status": true
+}
+
+###
+# Delete Screenshot By Id
+DELETE {{ baseURL }}/screenshots/1
